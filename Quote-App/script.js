@@ -1,4 +1,5 @@
-const pEl = document.querySelector("p");
+const pEl = document.querySelector("#font");
+const pElAut = document.querySelector("#author");
 const btn = document.querySelector("button");
 
 // Funktion für die Datenabfrage
@@ -14,7 +15,8 @@ function text() {
     })
     // empfangenen Daten aus der api werden im p-Element eingefügt
     .then((data) => {
-      pEl.innerText = data.quote + " - " + data.author + " - "; // Zitat + Autor einfügen
+      pEl.innerText = data.quote; // Zitat wird eingefügt
+      pElAut.innerText = " - " + data.author + " - "; // Autor einfügen
     })
     .catch((error) => {
       console.error("Es gab ein Problem mit der Fetch-Operation:", error);
