@@ -1,8 +1,8 @@
 const red = document.querySelector("#red"); // Zugriff auf den roten Slider
 const green = document.querySelector("#green"); // Zugriff auf den grünen Slider
 const blue = document.querySelector("#blue"); // Zugriff auf den blauen Slider
-const root = document.documentElement;
-const randomBtn = document.querySelector("button");
+const root = document.documentElement; // Zugriff auf den Root für die Hintergrundfarbe, dass der Header mitgefärbt wird
+const randomBtn = document.querySelector("button"); // Zugriff auf den Button für die Random-Color
 
 // Funktion für Zuweisung der Slider zur Farbänderung
 function mainColor() {
@@ -31,6 +31,7 @@ blue.addEventListener("input", () => {
   mainColor();
 });
 
+// Funktion für die Api - für die den Button
 function randomColor() {
   fetch("https://dummy-apis.netlify.app/api/color")
     .then((empfang) => empfang.json())
