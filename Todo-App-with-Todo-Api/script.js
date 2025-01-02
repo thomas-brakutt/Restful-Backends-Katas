@@ -1,5 +1,6 @@
 const input = document.querySelector(".inputNewTodo");
-const AddBtn = document.querySelector(".AddBtn");
+const addBtn = document.querySelector(".addBtn");
+const delBtn = document.querySelector(".delBtn");
 const todoList = document.querySelector(".list");
 
 let todos = [];
@@ -28,5 +29,24 @@ function renderTodos() {
     todoList.appendChild(newLi); // das ulElement erhält das erstellte liElement
   });
 }
+
+// eventListener auf Button zum hinzufügen von Todos
+addBtn.addEventListener("click", () => {
+  const inputText = input.value; // Variable um den Text aus dem inputElement zu speichern
+  const addedTodo = {
+    // Variable die das Todo als Objekt speichert
+    description: inputText,
+    done: false,
+  };
+
+  fetch("http://localhost:3000/todos", {
+    // um Backend zu aktualisieren
+    method: "POST", // POST Methode (hinzufügen von "Daten" zu der Api)
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(addedTodo),
+  });
+});
 
 loadTodos();
